@@ -1,8 +1,8 @@
 package com.werockstar.withkoin.di
 
+import com.google.gson.Gson
 import org.koin.dsl.module
 
 val appModule = module {
-    single { }
-    factory { }
+    single { Gson() }
 }
