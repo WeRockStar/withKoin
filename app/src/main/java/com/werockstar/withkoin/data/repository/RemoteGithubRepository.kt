@@ -1,7 +1,7 @@
-package com.werockstar.withkoin.data.remote
+package com.werockstar.withkoin.data.repository
 
+import com.werockstar.withkoin.data.remote.GithubAPI
 import com.werockstar.withkoin.data.remote.response.UserResponse
-import com.werockstar.withkoin.data.repository.GithubUserRepository
 import kotlinx.coroutines.*
 
 class RemoteGithubRepository(private val api: GithubAPI) : GithubUserRepository {
