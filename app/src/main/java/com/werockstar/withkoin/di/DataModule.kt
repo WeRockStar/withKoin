@@ -10,8 +10,8 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val dataModule = module {
-    factory<GithubUserRepository>(named("database")) { RoomGithubRepository(get()) }
-    factory<GithubUserRepository>(named("remote")) { RemoteGithubRepository(get()) }
+    factory<GithubUserRepository>(named("database")) { RoomGithubRepository(get(), get()) }
+    factory<GithubUserRepository>(named("remote")) { RemoteGithubRepository(get(), get()) }
     factory {
         Room.databaseBuilder(
             androidApplication(), AppDatabase::class.java, "koin-app"
