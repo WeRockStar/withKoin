@@ -13,4 +13,8 @@ class CoroutinesDispatcher : ThreadDispatcher {
         return Dispatchers.IO
     }
 
+    override fun compute(): CoroutineDispatcher {
+        return Dispatchers.Default
+    }
+
 }

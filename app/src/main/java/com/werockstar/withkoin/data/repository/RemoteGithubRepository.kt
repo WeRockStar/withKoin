@@ -3,7 +3,7 @@ package com.werockstar.withkoin.data.repository
 import com.werockstar.withkoin.core.ThreadDispatcher
 import com.werockstar.withkoin.data.remote.GithubAPI
 import com.werockstar.withkoin.data.remote.response.UserResponse
-import kotlinx.coroutines.*
+import kotlinx.coroutines.withContext
 
 class RemoteGithubRepository(private val api: GithubAPI, private val dispatcher: ThreadDispatcher) :
     GithubUserRepository {

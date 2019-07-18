@@ -10,7 +10,8 @@ class RoomGithubRepository(private val room: AppDatabase, private val dispatcher
 
     override suspend fun getUserByName(username: String): UserResponse {
         return withContext(dispatcher.io()) {
-            room.userDao().getUserByName(username).let { UserResponse(it.id, it.user) }
+            room.userDao().getUserByName(username)
+                .let { UserResponse(it.id, it.user) }
         }
     }
 
