@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.werockstar.withkoin.R
-import com.werockstar.withkoin.usecase.GetUsersUseCase
+import com.werockstar.withkoin.ui.user.usecase.GetUsersUseCase
 import org.koin.android.ext.android.inject
 
 class UsersActivity : AppCompatActivity() {

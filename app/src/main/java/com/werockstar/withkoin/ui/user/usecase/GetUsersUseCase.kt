@@ -1,4 +1,4 @@
-package com.werockstar.withkoin.usecase
+package com.werockstar.withkoin.ui.user.usecase
 
 import com.werockstar.withkoin.data.remote.response.UserResponse
 import com.werockstar.withkoin.data.repository.GithubUserRepository
