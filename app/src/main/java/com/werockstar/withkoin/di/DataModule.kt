@@ -13,8 +13,6 @@ val dataModule = module {
     single<GithubUserRepository>(named("database")) { RoomGithubRepository(get(), get()) }
     single<GithubUserRepository>(named("remote")) { RemoteGithubRepository(get(), get()) }
     single {
-        Room.databaseBuilder(
-            androidApplication(), AppDatabase::class.java, "koin-app"
-        ).build()
+        Room.databaseBuilder(androidApplication(), AppDatabase::class.java, "koin-app").build()
     }
 }

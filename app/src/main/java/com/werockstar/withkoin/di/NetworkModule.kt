@@ -16,6 +16,7 @@ val networkModule = module {
         val cacheSize: Long = 10 * 1024 * 1024
         val httpCacheDirectory = File(androidApplication().cacheDir, "http-cache")
         val cache = Cache(httpCacheDirectory, cacheSize)
+
         OkHttpClient.Builder()
             .readTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
@@ -26,7 +27,7 @@ val networkModule = module {
 
     single {
         val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        interceptor.level = HttpLoggingInterceptor.Level.HEADERS
         interceptor
     }
     single {
