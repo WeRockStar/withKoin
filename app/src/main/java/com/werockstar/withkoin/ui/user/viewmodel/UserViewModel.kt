@@ -8,7 +8,6 @@ import com.werockstar.withkoin.data.remote.response.UserResponse
 import com.werockstar.withkoin.ui.user.usecase.GetUsersUseCase
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class UserViewModel(private val useCase: GetUsersUseCase) : ViewModel() {
 
