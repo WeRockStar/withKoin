@@ -4,7 +4,7 @@ buildscript {
     ext.koin_version = '2.0.1'
 
     ext {
-        lifecycle_version = '2.0.0'
+        lifecycle_version = '2.2.0-alpha02'
         navigation_version = ''
         room_version = '2.1.0'
         navigation_version = '2.0.0'
