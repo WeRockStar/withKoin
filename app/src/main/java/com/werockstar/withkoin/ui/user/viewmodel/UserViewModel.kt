@@ -25,7 +25,5 @@ class UserViewModel(private val useCase: GetUsersUseCase) : ViewModel() {
         }
     }
 
-    fun getUsersLiveData(): LiveData<List<UserResponse>> {
-        return liveData
-    }
+    fun usersObserve(): LiveData<List<UserResponse>> = liveData
 }
