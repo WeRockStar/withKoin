@@ -4,11 +4,16 @@ package com.werockstar.withkoin.ui.user
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.werockstar.withkoin.R
+import com.werockstar.withkoin.ui.user.viewmodel.UserDetailViewModel
 import kotlinx.android.synthetic.main.fragment_user_detail.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
+
+    private val viewModel: UserDetailViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -16,9 +21,15 @@ class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
         arguments?.let {
             val args = UserDetailFragmentArgs.fromBundle(it)
             val user = args.user
+
+            viewModel.getUser(user.login)
+
             tvName.text = user.login
-            tvBio.text = user.bio
-            Glide.with(this).load(user.url).into(ivAvatar)
+            Glide.with(this).load("${user.url}.jpg").into(ivAvatar)
+
+            viewModel.observe().observe(this, Observer {
+                tvBio.text = user.bio
+            })
         }
     }
 }
