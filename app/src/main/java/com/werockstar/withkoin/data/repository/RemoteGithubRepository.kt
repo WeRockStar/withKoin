@@ -13,7 +13,13 @@ class RemoteGithubRepository(private val api: GithubAPI, private val dispatcher:
     }
 
     override suspend fun getUsers(): List<UserResponse> {
-        return withContext(dispatcher.io()) { api.getUsers() }
+        return withContext(dispatcher.io()) {
+            val users = api.getUsers()
+            val user = getUserByName("WeRockStar")
+            val userAddition = users.toMutableList()
+            userAddition.add(user)
+            userAddition
+        }
     }
 
 }
