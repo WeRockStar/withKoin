@@ -19,7 +19,6 @@ class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
             tvName.text = user.login
             tvBio.text = user.bio
             Glide.with(this).load(user.url).into(ivAvatar)
-
         }
     }
 }
