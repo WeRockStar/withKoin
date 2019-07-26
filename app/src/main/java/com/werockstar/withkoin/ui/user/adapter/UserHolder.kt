@@ -1,4 +1,4 @@
-package com.werockstar.withkoin.ui.user
+package com.werockstar.withkoin.ui.user.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

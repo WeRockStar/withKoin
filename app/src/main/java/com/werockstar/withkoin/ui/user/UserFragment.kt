@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.werockstar.withkoin.R
 import com.werockstar.withkoin.data.remote.response.UserResponse
+import com.werockstar.withkoin.ui.user.adapter.UserAdapter
 import com.werockstar.withkoin.ui.user.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.fragment_user.*
 import org.koin.android.viewmodel.ext.android.viewModel
