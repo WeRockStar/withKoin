@@ -7,8 +7,11 @@ import com.werockstar.withkoin.data.remote.response.UserResponse
 import kotlinx.android.synthetic.main.user_view_item.view.*
 
 class UserHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-    fun bind(user: UserResponse) {
+
+    fun bind(user: UserResponse, func: (user: UserResponse) -> Unit) {
         view.tvUser.text = user.login
         Glide.with(view.context).load(user.url).into(view.ivAvatar)
+        view.root.setOnClickListener { func(user) }
     }
+
 }

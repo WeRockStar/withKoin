@@ -1,5 +1,6 @@
 package com.werockstar.withkoin.ui.user.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,9 +18,10 @@ class UserViewModel(private val useCase: GetUsersUseCase) : ViewModel() {
         viewModelScope.launch {
             val userAsync = async { useCase.getGithubUsers() }
             try {
-                liveData.value = userAsync.await()
+                val users = userAsync.await()
+                liveData.value = users
             } catch (e: Exception) {
-                //TODO: Handle exception
+                Log.e("ErrorJa", e.message ?: "")
             }
         }
     }
