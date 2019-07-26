@@ -25,7 +25,7 @@ class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
             viewModel.getUser(user.login)
 
             tvName.text = user.login
-            Glide.with(this).load("${user.url}.jpg").into(ivAvatar)
+            Glide.with(this).load(user.avatarUrl).into(ivAvatar)
 
             viewModel.observe().observe(this, Observer {
                 tvBio.text = user.bio

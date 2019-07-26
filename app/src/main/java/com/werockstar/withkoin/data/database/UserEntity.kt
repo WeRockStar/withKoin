@@ -8,6 +8,6 @@ import androidx.room.PrimaryKey
 data class UserEntity(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "login") val user: String,
-    @ColumnInfo(name = "url") val url: String,
+    @ColumnInfo(name = "avatarUrl") val url: String,
     @ColumnInfo(name = "bio") val bio: String
 )
