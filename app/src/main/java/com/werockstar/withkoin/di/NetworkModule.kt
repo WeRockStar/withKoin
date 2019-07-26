@@ -27,7 +27,7 @@ val networkModule = module {
 
     single {
         val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        interceptor.level = HttpLoggingInterceptor.Level.BASIC
         interceptor
     }
     single {

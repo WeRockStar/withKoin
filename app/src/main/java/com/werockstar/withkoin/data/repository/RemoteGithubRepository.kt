@@ -9,7 +9,9 @@ class RemoteGithubRepository(private val api: GithubAPI, private val dispatcher:
     GithubUserRepository {
 
     override suspend fun getUserByName(username: String): UserResponse {
-        return withContext(dispatcher.io()) { api.getUserByName(username) }
+        return withContext(dispatcher.io()) {
+            api.getUserByName(username)
+        }
     }
 
     override suspend fun getUsers(): List<UserResponse> {
