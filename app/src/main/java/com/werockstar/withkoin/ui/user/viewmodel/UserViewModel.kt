@@ -9,6 +9,7 @@ import com.werockstar.withkoin.data.remote.response.UserResponse
 import com.werockstar.withkoin.ui.user.usecase.GetUsersUseCase
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 
 class UserViewModel(private val useCase: GetUsersUseCase) : ViewModel() {
 
@@ -20,7 +21,7 @@ class UserViewModel(private val useCase: GetUsersUseCase) : ViewModel() {
             try {
                 val users = userAsync.await()
                 liveData.value = users
-            } catch (e: Exception) {
+            } catch (e: HttpException) {
                 Log.e("ErrorJa", e.message ?: "")
             }
         }

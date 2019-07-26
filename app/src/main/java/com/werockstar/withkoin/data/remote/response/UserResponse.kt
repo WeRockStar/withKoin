@@ -1,3 +1,7 @@
 package com.werockstar.withkoin.data.remote.response
 
-class UserResponse(val id: Int, val login: String, val url: String)
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+class UserResponse(val id: Int, val login: String, val url: String): Parcelable
