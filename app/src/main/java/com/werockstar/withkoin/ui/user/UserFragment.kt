@@ -2,7 +2,6 @@ package com.werockstar.withkoin.ui.user
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -30,6 +29,7 @@ class UserFragment : Fragment(R.layout.fragment_user) {
             it ?: return@Observer
             setupAdapter(it)
         })
+
     }
 
     private fun setupAdapter(users: List<UserResponse>) {
