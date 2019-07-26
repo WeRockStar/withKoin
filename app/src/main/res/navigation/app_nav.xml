@@ -7,9 +7,14 @@
     <fragment android:id="@+id/userFragment"
               android:name="com.werockstar.withkoin.ui.user.UserFragment"
               android:label="fragment_user"
-              tools:layout="@layout/fragment_user"/>
+              tools:layout="@layout/fragment_user">
+        <action android:id="@+id/detail_action" app:destination="@id/userDetailFragment"/>
+    </fragment>
     <fragment android:id="@+id/userDetailFragment"
               android:name="com.werockstar.withkoin.ui.user.UserDetailFragment"
               android:label="fragment_user_detail"
-              tools:layout="@layout/fragment_user_detail"/>
+              tools:layout="@layout/fragment_user_detail">
+        <argument android:name="user"
+                  app:argType="com.werockstar.withkoin.data.remote.response.UserResponse"/>
+    </fragment>
 </navigation>

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.werockstar.withkoin.R
@@ -33,7 +34,8 @@ class UserFragment : Fragment(R.layout.fragment_user) {
 
     private fun setupAdapter(users: List<UserResponse>) {
         val adapter = UserAdapter(users) { user ->
-            Log.d("Click", user.login)
+            val directions = UserFragmentDirections.detailAction(user)
+            findNavController().navigate(directions)
         }
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()

@@ -10,5 +10,10 @@ class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        arguments?.let {
+            val args = UserDetailFragmentArgs.fromBundle(it)
+            args.user
+        }
     }
 }
