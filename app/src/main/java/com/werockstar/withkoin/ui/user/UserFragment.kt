@@ -24,12 +24,14 @@ class UserFragment : Fragment(R.layout.fragment_user) {
 
         setupRecyclerView()
 
-        viewModel.getUsers()
+        viewModel.observe().value?.let {
+            setupAdapter(it)
+        } ?: viewModel.getUsers()
+
         viewModel.observe().observe(this, Observer {
             it ?: return@Observer
             setupAdapter(it)
         })
-
     }
 
     private fun setupRecyclerView() {
@@ -44,5 +46,11 @@ class UserFragment : Fragment(R.layout.fragment_user) {
         }
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        viewModel.observe().removeObservers(this)
     }
 }
