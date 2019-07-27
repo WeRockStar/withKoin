@@ -45,8 +45,7 @@ class UserFragment : Fragment(R.layout.fragment_user) {
 
     private fun setupAdapter(users: List<UserResponse>) {
         val adapter = UserAdapter(users) { user ->
-            val directions = UserFragmentDirections.detailAction(user)
-            findNavController().navigate(directions)
+            findNavController().navigate(UserFragmentDirections.detailAction(user))
         }
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
