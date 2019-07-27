@@ -23,20 +23,24 @@ class UserFragment : Fragment(R.layout.fragment_user) {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
-
-        viewModel.observe().value?.let {
-            setupAdapter(it)
-        } ?: viewModel.getUsers()
-
+        getUsers()
         viewModel.observe().observe(this, Observer {
             it ?: return@Observer
             setupAdapter(it)
         })
     }
 
+    private fun getUsers() {
+        viewModel.observe().value?.let {
+            setupAdapter(it)
+        } ?: viewModel.getUsers()
+    }
+
     private fun setupRecyclerView() {
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        }
     }
 
     private fun setupAdapter(users: List<UserResponse>) {
@@ -46,11 +50,5 @@ class UserFragment : Fragment(R.layout.fragment_user) {
         }
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
-    }
-
-    override fun onStop() {
-        super.onStop()
-
-        viewModel.observe().removeObservers(this)
     }
 }
