@@ -12,7 +12,7 @@ class UserViewModel(private val useCase: GetUsersUseCase) : BaseViewModel() {
 
     private val liveData = SingleLiveEvent<List<UserResponse>>()
 
-    fun getUserAll() {
+    fun getUsers() {
         viewModelScope.launch(exceptionHandler) {
             val userAsync = async { useCase.getGithubUsers() }
             val users = userAsync.await()
@@ -20,5 +20,5 @@ class UserViewModel(private val useCase: GetUsersUseCase) : BaseViewModel() {
         }
     }
 
-    fun usersObserve(): LiveData<List<UserResponse>> = liveData
+    fun observe(): LiveData<List<UserResponse>> = liveData
 }

@@ -22,18 +22,19 @@ class UserFragment : Fragment(R.layout.fragment_user) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (savedInstanceState == null) {
+        setupRecyclerView()
 
-            recyclerView.setHasFixedSize(true)
-            recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        viewModel.getUsers()
+        viewModel.observe().observe(this, Observer {
+            it ?: return@Observer
+            setupAdapter(it)
+        })
 
-            viewModel.getUserAll()
-            viewModel.usersObserve().observe(this, Observer {
-                it ?: return@Observer
-                setupAdapter(it)
-            })
-        }
+    }
 
+    private fun setupRecyclerView() {
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     }
 
     private fun setupAdapter(users: List<UserResponse>) {
