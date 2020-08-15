@@ -1,5 +1,6 @@
 package com.werockstar.withkoin.ui.user.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.werockstar.withkoin.data.remote.response.UserResponse
@@ -9,15 +10,14 @@ import kotlinx.coroutines.launch
 
 class UserDetailViewModel(private val useCase: GetUserUseCase) : BaseViewModel() {
 
-    private val liveData = MutableLiveData<UserResponse>()
+    private val _user = MutableLiveData<UserResponse>()
+	val user: LiveData<UserResponse> = _user
 
     fun getUser(userLogin: String) {
         viewModelScope.launch(exceptionHandler) {
             val async = async { useCase.getGithubUser(userLogin) }
             val user = async.await()
-            liveData.value = user
+            _user.value = user
         }
     }
-
-    fun observe() = liveData
 }

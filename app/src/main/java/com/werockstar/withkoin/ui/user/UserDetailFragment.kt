@@ -22,12 +22,12 @@ class UserDetailFragment : Fragment(R.layout.fragment_user_detail) {
 
         val user = user()
         viewModel.getUser(user.login)
-
         tvName.text = user.login
+
         Glide.with(this).load(user.avatarUrl).into(ivAvatar)
-        viewModel.observe().observe(this, Observer {
-            tvBio.text = user.bio
-        })
+        viewModel.user.observe(this, Observer {
+			tvBio.text = it .bio
+		})
     }
 
     private fun user(): UserResponse {
